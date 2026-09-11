@@ -10,11 +10,18 @@
 (function(){
 var h=document.documentElement, msg="";
 function ha(c){ return (" "+h.className+" ").indexOf(" "+c+" ")>=0; }
+// L'errore puo' arrivare prima che l'avviso esista — uno script in <head> che
+// non si lascia leggere —: il messaggio si tiene da parte e si scrive quando
+// la pagina c'e'. Trovato dal collaudo condiviso di claude-hub, che inietta
+// l'errore in testa invece che in coda.
+function scrivi(){
+  var e=document.getElementById("nmerr");
+  if(e&&msg) e.textContent="Errore del motore: "+msg;
+}
 function ko(m){
   if(m&&!msg) msg=m;
   if(!ha("motore-ko")) h.className+=" motore-ko";
-  var e=document.getElementById("nmerr");
-  if(e&&msg) e.textContent="Errore del motore: "+msg;
+  scrivi();
 }
 h.className+=" js";
 window.onerror=function(m,src,riga,col){
@@ -25,7 +32,7 @@ window.onerror=function(m,src,riga,col){
   ko(m+(riga?" (riga "+riga+(col?", colonna "+col:"")+")":""));
 };
 document.addEventListener("DOMContentLoaded",function(){
-  if(!ha("motore-ok")) ko(msg||"il motore non ha completato l'avvio");
+  if(!ha("motore-ok")) ko(msg||"il motore non ha completato l'avvio"); else scrivi();
 });
 })();
 </script>
@@ -496,7 +503,7 @@ table.ntab tr.ntgt.non td{background:var(--verde-bg);box-shadow:inset 3px 0 0 va
    scegli <em>diluizione libera</em> e inseriscila: il tool calcola su quella.</div>
  </div>
  <div class="firma"><span>Creato dal</span><b>dott. Francesco Fugetto</b>
-  versione 2.3.3 · settembre 2026</div>
+  versione 2.3.4 · settembre 2026</div>
 </div>
 
 <div class="bar">
@@ -8755,8 +8762,8 @@ sia prevista da qualcuno.</div>
  <thead><tr><th>Dose</th><th colspan='8'>Velocità</th></tr></thead><tbody><tr><td class="k">8,3 mg/h</td><td class="num" colspan="8">2,08 mL/h <span style="color:var(--text-muted)">(indipendente dal peso)</span></td></tr></tbody></table></div></div>
 
 <div class="footer">
- <strong>Prontuario delle infusioni in terapia intensiva cardiologica — versione 2.3.3, settembre 2026. Creato dal dott. Francesco Fugetto.</strong><br>
- Versione aggiornata, anche per iPhone: <a class="nmurl" href="https://francescofugetto-ai.github.io/prontuario-infusioni-web/">https://francescofugetto-ai.github.io/prontuario-infusioni-web/</a>. Questa copia è la 2.3.3.<br>
+ <strong>Prontuario delle infusioni in terapia intensiva cardiologica — versione 2.3.4, settembre 2026. Creato dal dott. Francesco Fugetto.</strong><br>
+ Versione aggiornata, anche per iPhone: <a class="nmurl" href="https://francescofugetto-ai.github.io/prontuario-infusioni-web/">https://francescofugetto-ai.github.io/prontuario-infusioni-web/</a>. Questa copia è la 2.3.4.<br>
  Generato da <code>data/prontuario.json</code> tramite <code>scripts/build_html.py</code>: nessun dosaggio e
  scritto a mano nell'HTML. Ogni velocità e ricalcolata dal motore e verificata da due implementazioni
  indipendenti più il confronto con le tabelle stampate nelle fonti.<br><br>

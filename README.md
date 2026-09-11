@@ -3,7 +3,7 @@
 **https://francescofugetto-ai.github.io/prontuario-infusioni-web/**
 
 Questo repository contiene soltanto il documento consegnato del prontuario delle
-infusioni in terapia intensiva cardiologica — versione 2.3.3 — servito da
+infusioni in terapia intensiva cardiologica — versione 2.3.4 — servito da
 GitHub Pages. Esiste per l'iPhone: li' un file HTML salvato sul telefono si apre
 nell'anteprima, che non esegue il motore di calcolo, mentre da questo indirizzo,
 in Safari, il tool funziona, si aggiunge alla schermata Home e dopo la prima
