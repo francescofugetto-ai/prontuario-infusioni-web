@@ -8,10 +8,10 @@
 //
 // ES5 come il motore, anche se un iPhone con service worker lo leggerebbe
 // comunque: test_safari.py controlla anche questo file.
-// 2.3.4 la sostituisce scripts/pubblica_web.py: una versione nuova e'
+// 2.3.5 la sostituisce scripts/pubblica_web.py: una versione nuova e'
 // un file nuovo, e il browser installa il service worker nuovo da solo.
 
-var CACHE = "prontuario-infusioni-2.3.4";
+var CACHE = "prontuario-infusioni-2.3.5";
 var FILE = ["./", "index.html", "manifest.webmanifest",
             "icona-180.png", "icona-192.png", "icona-512.png"];
 
